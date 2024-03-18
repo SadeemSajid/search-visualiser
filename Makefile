@@ -1,3 +1,4 @@
+CC = g++
 TARGET = app
 OBJFILES = Node.o NodeGraphic.o
 IMPFILES = ./imp/Node.cpp ./imp/NodeGraphic.cpp
@@ -7,13 +8,13 @@ LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 all: $(TARGET)
 
 $(TARGET): $(OBJFILES) main.o
-	g++ $(OBJFILES) main.o -o $(TARGET) $(LDFLAGS)
+	$(CC) $(OBJFILES) main.o -o $(TARGET) $(LDFLAGS)
 
 $(OBJFILES): $(IMPFILES) $(HEADFILES)
-	g++ -c $(IMPFILES)
+	$(CC) -c $(IMPFILES)
 
 main.o: main.cpp
-	g++ -c main.cpp
+	$(CC) -c main.cpp
 
 clean:
 	rm -f $(OBJFILES) $(TARGET) main.o
